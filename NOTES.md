@@ -82,3 +82,7 @@ Numbers in the text come from scripted runs (scratchpad exp*.py; same data, Simp
 - Gotchas documented in Ch 3: Train retrains on every model edit; GUI blocks during training. Validation split is taken after augmentation, so augment-then-validate leaks (Ch 2 says judge on the test set).
 - Workflows added: `mnist-explore.ows` (Ch 1), `datasets-tour.ows` (Ch 2). `datasets/{mnist,fashion-mnist,emnist-letters,cifar10}` copied from the scratchpad exports (gitignored).
 - Still open: `imgs/Title Image.png` missing; cat/dog/duck set not built (Ch 2 does not use it); labs 2B-2D and 3A-3E workflows were verified by script/widget run, not click-by-click in the canvas.
+
+## Title image (2026-11-26)
+
+`imgs/Title Image.png` (1200 x 400): a real MNIST 7 noised with the book's 200-step schedule (steps 0, 30, 60, 100, 199), then a class-7 sample denoised by the 30-epoch diffusion model (6 snapshots, seed 21), with the title in DejaVu Sans. Built with Pillow from the add-on's `make_schedule` and `load_generative`; the model file was a scratch `.imagenet` (retrain with Lab 9A to reproduce).
