@@ -9,6 +9,7 @@ By the end of this chapter, you will be able to:
 - Train the network on MNIST and read the loss and accuracy curves in *Train ImageNet*.
 - Measure the accuracy of a trained network on test images with *Classify Images*.
 - Show by experiment what the convolution layer contributes, and what changing its size does.
+- Look inside a trained network at the filters it learned, and at the images it gets wrong.
 
 ---
 
@@ -101,6 +102,8 @@ Look at the end of the graph. The training accuracy (99%) is higher than the val
 | *Train ImageNet* | Trains and plots the curves; outputs the trained model | **Batch Size**, **Epochs**, **Validation split (%)** |
 | *Classify Images* | Labels new images and reports the accuracy | none |
 | *Data Table* | Shows each test image with its **Prediction** | |
+| *Misclassified Images* | Confusion matrix of the test results; the wrong images as output | click a cell to select those images |
+| *Inspect ImageNet* | Shows the learned filters and the feature maps for one image | **Layer**, **Row** |
 
 *Build ImageNet* shows the number of **Weights** and the **Output** shape under *Input Images*. Use it to check your hand count.
 
@@ -129,6 +132,7 @@ Two behaviors to know about:
 4. Connect *Build ImageNet* to *Train ImageNet* (**Learner**), then *Import Images* (train) to *Train ImageNet* (**Evaluation Data**). Training starts. Watch the curves appear.
 5. Add *Classify Images*. Connect *Train ImageNet* to its **Model** input, and *Import Images: test* to its **Data** input.
 6. Add a *Data Table* and connect *Classify Images* to it. Find a **Prediction** that disagrees with the **category**.
+7. Add *Misclassified Images* and connect *Classify Images* to it. Rows are the true digits and columns the predictions; the green diagonal is correct, and every red cell is a kind of mistake. Click the reddest cell.
 
 **Expected results:** the last epoch shows a training accuracy of about 96% and a validation accuracy of about 93% to 94%. *Classify Images* reports a test accuracy of about **93%** (it varies by a point or two from run to run, because training starts from random weights).
 
@@ -136,7 +140,7 @@ Two behaviors to know about:
 
 1. Which epoch had the biggest jump in accuracy? Why do you think the first epochs improve fastest?
 2. The test accuracy is a bit lower than the training accuracy. Why would you expect that?
-3. Choose five wrong predictions in the *Data Table*. Which digits were mistaken for which? Do the mistakes look reasonable to you?
+3. Which pair of digits does the confusion matrix show confused most often? Connect the **Selected** output of *Misclassified Images* to an *Image Viewer* and look at those images. Do the mistakes look reasonable to you?
 
 > The finished workflow is `workflows/mnist-cnn.ows`. Re-point both *Import Images* widgets at your own copy of the dataset folders.
 
@@ -239,6 +243,27 @@ Two behaviors to know about:
 
 ---
 
+## Lab Exercise 3F: Look Inside
+
+**Goal:** See the filters that training produced, and what they do to a picture.
+
+*Time: 5 minutes.*
+
+**Steps:**
+
+1. In the workflow of 3A, add *Inspect ImageNet*. Connect the output of *Train ImageNet* to its **Model** input and *Import Images* (train) to its **Images** input.
+2. In **Layer**, choose the *Conv2D* layer. Look at the 32 filters, and at the 32 feature maps for the image in **Row** 0. Change **Row** to look at a few other digits.
+
+![Figure 3. Inspect ImageNet for SimpleCNN trained on MNIST. Top: the image, a handwritten 5. Middle: the 32 filters of the *Conv2D* layer, each a 3 x 3 grid of weights drawn as a tiny picture. Bottom: the 32 feature maps for that image.](inspect-imagenet.png)
+
+**Questions:**
+
+1. Before training, the filters are random. What do they look like now? Do you see light and dark bands, as in the edge filter of section 3.2?
+2. Compare two feature maps for the same digit. Do they respond to the same parts of the stroke?
+3. Choose the *MaxPooling2D* layer. How does its map differ from the *Conv2D* map, and why is it smaller?
+
+---
+
 ## Comprehension Questions
 
 1. A *Conv2D* layer has 16 filters of size 3 x 3 on a 28 x 28 x 1 image. How many weights does it have, and what is its output shape? Show your count.
@@ -268,7 +293,7 @@ Two behaviors to know about:
 
 ## Notes
 
-- **Workflow for this chapter:** `workflows/mnist-cnn.ows` (Labs 3A and 3B). Labs 3C to 3E are edits of it.
+- **Workflow for this chapter:** `workflows/mnist-cnn.ows` (Labs 3A and 3B). Labs 3C to 3E are edits of it, and 3F uses the *Inspect ImageNet* widget that the workflow already contains (together with *Misclassified Images*).
 - **Setup:** MNIST subset from `make datasets` (500 training and 100 test images per class). Labs use *SimpleCNN* with the Adam method, batch size 32, and a 20% validation split.
 - **Variance:** every training starts from random weights, so the same lab varies by a point or two. For the single-run numbers in the tables, 5 epochs gave a test accuracy between 92.7% and 93.2%, and the same network trained for 10 epochs gave 94.0% and 95.1% in two runs.
 - **Numbers quoted:**

@@ -86,6 +86,7 @@ Designing a network involves many small choices: relu or tanh, max or average po
 | *Build ImageNet* | Designs the network | The **Add Layers** buttons (*Conv2D*, *MaxPooling2D*, *AveragePooling2D*, *Flatten*, *Dense*, ...); in each layer box, its numbers; ↑ ↓ ✕ |
 | *Train ImageNet* | Trains it | **Epochs**, **Validation split (%)** |
 | *Classify Images* | Reports the test accuracy | |
+| *Inspect ImageNet* | Shows the filters and feature maps of any convolution layer | **Layer**, **Row** |
 
 New layers are inserted just before the last *Dense* layer, and the weight count under **Input Images** updates after every change. Use it to check your hand count before you train.
 
@@ -106,6 +107,7 @@ New layers are inserted just before the last *Dense* layer, and the weight count
 3. For *TwoConv*, add a *Conv2D* and a *MaxPooling2D* after the first *MaxPooling2D* (use the **Add Layers** buttons and ↑ ↓ to place them), and set the new *Conv2D* **filters** to **64**. Check **Weights: 34,826**.
 4. For *ThreeConv*, add another *Conv2D* with **128** filters, and no pooling after it. Check **Weights: 104,202**.
 5. Train each for **5 epochs** and read the test accuracy from *Classify Images*. Repeat each twice.
+6. Connect the trained *2 conv* network to *Inspect ImageNet* (and the training images to its **Images** input). Compare the feature maps of the first and of the second *Conv2D* layer for the same digit.
 
 **Expected results** (two runs each; your numbers will differ by a point or two):
 
@@ -120,6 +122,7 @@ New layers are inserted just before the last *Dense* layer, and the weight count
 1. How much did the second convolution layer add? About how many of the remaining errors did it remove? *(From 7% wrong to 3.5% wrong is half.)*
 2. The third layer tripled the weights and added nothing measurable. Why might MNIST not need a third?
 3. 2 conv is both smaller and better than 1 conv. What does that tell you about "bigger network, better results"?
+4. In *Inspect ImageNet*, how do the feature maps of the second *Conv2D* layer differ from those of the first? Are they smaller, coarser, harder to read? Relate it to the receptive field of section 4.2.
 
 ---
 

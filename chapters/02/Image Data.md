@@ -105,6 +105,7 @@ Choose augmentations that match how the real data varies. Mirror images are natu
 | *Build ImageNet* | Designs a network layer by layer | **Input Images** (Height, Width, Channels), **Prebuilt ImageNets**, last *Dense* units |
 | *Train ImageNet* | Trains the network and plots loss and accuracy | **Epochs**, **Batch Size**, **Validation split (%)** |
 | *Classify Images* | Labels new images with a trained network and reports the accuracy | none |
+| *Misclassified Images* | Shows which classes are confused | click a cell to see the images |
 | *Preprocess Images* | Grayscale, resize, normalize into a new folder | the three options; **Select Output Folder** |
 | *Augment Images* | Saves randomly changed copies | **Augmentations per Image**, the options, **Select Save Folder** |
 | *Data Sampling* | Takes a random part of a table | **Fixed proportion of data**, **Stratify sample** |
@@ -147,7 +148,8 @@ For each dataset in turn:
 2. Add *Build ImageNet*. In **Input Images**, set **Height**, **Width**, and **Channels** to match the dataset (28 x 28 x 1 for the first three, 32 x 32 x 3 for CIFAR-10). Choose **SimpleCNN** under **Prebuilt ImageNets**. For EMNIST letters, change the last *Dense* layer's **units** to **26**.
 3. Add *Train ImageNet*. Connect *Build ImageNet* to **Learner** and the train *Import Images* to **Evaluation Data**. Set **Epochs** to 5 and **Validation split (%)** to 20. Training starts as soon as both inputs have arrived.
 4. Add *Classify Images*. Connect *Train ImageNet* to **Model** and the test *Import Images* to **Data**. The accuracy on the test images appears in the widget's window.
-5. Write the accuracy in a table, and compare it with your prediction from 2A.
+5. Add *Misclassified Images* after *Classify Images* and note the largest red cell.
+6. Write the accuracy in a table, and compare it with your prediction from 2A.
 
 **Expected results** (5 epochs, 500 training images per class; yours will differ by a point or two because the network starts from random weights):
 
@@ -161,6 +163,7 @@ For each dataset in turn:
 **Questions:**
 
 1. Which dataset was easiest, and which hardest? Was your 2A ranking right?
+   Which two classes did *Misclassified Images* show confused most in each? (We saw *pullover* taken for *shirt* in Fashion-MNIST, and *i* taken for *l* in EMNIST letters.)
 2. EMNIST letters has 26 classes, so a random guess is right only 3.8% of the time (1 in 26), against 10% for the other datasets. Which is more impressive: 83% on letters or 84% on Fashion-MNIST?
 3. On CIFAR-10 the training accuracy at the end (about 60%) is well above the validation accuracy (about 47%). On MNIST the gap is much smaller. What might that mean? *(We return to this in Chapter 5.)*
 4. The network for CIFAR-10 has about 18,000 more weights than for MNIST. Most of them are not in the *Conv2D* layer (which gains only 576, from seeing 3 color layers instead of 1). Where are they? *(Hint: a 32 x 32 image leaves a bigger map after the convolution and pooling than a 28 x 28 one. Work out how many numbers reach the *Dense* layer in each case: 13 x 13 x 32 against 15 x 15 x 32.)*

@@ -144,11 +144,15 @@ def cnn():
         import_images("test", "mnist/test", "Import Images: MNIST test", (100, 300)),
         ("classify", "Classify Images", "Classify Images", (550, 225), {}),
         ("table", "Data Table", "Data Table: predictions", (775, 225), {}),
+        ("mis", "Misclassified Images", "Misclassified Images", (775, 350), {"controlAreaVisible": True}),
+        ("inspect", "Inspect ImageNet", "Inspect ImageNet", (550, 350), {"controlAreaVisible": True}),
     ]
-    links = [("train", "trainnet"), ("build", "trainnet"), ("trainnet", "classify"), ("test", "classify"), ("classify", "table")]
+    links = [("train", "trainnet"), ("build", "trainnet"), ("trainnet", "classify"), ("test", "classify"), ("classify", "table"),
+             ("classify", "mis"), ("trainnet", "inspect"), ("train", "inspect")]
     note = ("Train ImageNet starts when both inputs arrive (5 epochs, about 10 seconds). "
-            "Classify Images shows the accuracy on the test images; the Data Table lists every Prediction next to its category. The dataset paths are absolute.")
-    return build(nodes, links, [(note, (550, 20, 300, 120))])
+            "Classify Images shows the accuracy on the test images; the Data Table lists every Prediction next to its category; "
+            "Misclassified Images shows the confusion matrix; Inspect ImageNet shows the filters. The dataset paths are absolute.")
+    return build(nodes, links, [(note, (550, 20, 300, 180))])
 
 
 def explore():

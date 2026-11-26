@@ -47,7 +47,7 @@ Click a cell, such as the true *dog* and predicted *cat* cell, and the widget se
 - The **filters** are the 3 x 3 grids of weights, drawn as tiny pictures. After training they are not random: each has become a small edge or stroke detector, bright where it wants light pixels and dark where it wants dark ones.
 - The **feature maps** are the layer's responses to the chosen image. Some maps light up the horizontal bar on top of the 5, others the vertical stroke, and others the outline of the whole digit. Each map is stretched to full brightness, so compare their shapes and not their brightness.
 
-This is what Chapter 4 described in words. Choose a deeper layer from the **Layer** list and the maps get smaller and harder to read, because they respond to bigger and more abstract patterns.
+This is what Chapters 3 and 4 described in words. Choose a deeper layer from the **Layer** list and the maps get smaller and harder to read, because they respond to bigger and more abstract patterns.
 
 ---
 
