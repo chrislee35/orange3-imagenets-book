@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<scheme version="2.0" title="" description="">
+	<nodes>
+		<node id="0" name="Import Images" qualified_name="orangecontrib.imageanalytics.widgets.owimageimport.OWImportImages" project_name="Orange3-ImageAnalytics" version="" title="Import Images: CIFAR-10 train" position="(100, 150)" />
+		<node id="1" name="Pretrained ImageNet" qualified_name="orangecontrib.imagenets.widgets.ow_pretrained_imagenet.OWPretrainedImageNet" project_name="orange3-imagenets" version="" title="Pretrained ImageNet" position="(325, 20)" />
+		<node id="2" name="Train ImageNet" qualified_name="orangecontrib.imagenets.widgets.ow_image_train_and_score.OWImageTrainAndScore" project_name="orange3-imagenets" version="" title="Train ImageNet" position="(325, 150)" />
+		<node id="3" name="Import Images" qualified_name="orangecontrib.imageanalytics.widgets.owimageimport.OWImportImages" project_name="Orange3-ImageAnalytics" version="" title="Import Images: CIFAR-10 test" position="(100, 300)" />
+		<node id="4" name="Classify Images" qualified_name="orangecontrib.imagenets.widgets.ow_imagenet_classify.OWImageNetClassify" project_name="orange3-imagenets" version="" title="Classify Images" position="(550, 225)" />
+		<node id="5" name="Misclassified Images" qualified_name="orangecontrib.imagenets.widgets.ow_misclassified.OWMisclassified" project_name="orange3-imagenets" version="" title="Misclassified Images" position="(775, 225)" />
+		<node id="6" name="Image Viewer" qualified_name="orangecontrib.imageanalytics.widgets.owimageviewer.OWImageViewer" project_name="Orange3-ImageAnalytics" version="" title="Image Viewer: mistakes" position="(1000, 225)" />
+	</nodes>
+	<links>
+		<link id="0" source_node_id="0" sink_node_id="1" source_channel="Data" sink_channel="Images" enabled="true" source_channel_id="data" sink_channel_id="data" />
+		<link id="1" source_node_id="1" sink_node_id="2" source_channel="Model" sink_channel="Learner" enabled="true" source_channel_id="model" sink_channel_id="model" />
+		<link id="2" source_node_id="0" sink_node_id="2" source_channel="Data" sink_channel="Evaluation Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
+		<link id="3" source_node_id="2" sink_node_id="4" source_channel="Trained Model" sink_channel="Model" enabled="true" source_channel_id="trained_model" sink_channel_id="model" />
+		<link id="4" source_node_id="3" sink_node_id="4" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
+		<link id="5" source_node_id="4" sink_node_id="5" source_channel="Annotated Data" sink_channel="Annotated Data" enabled="true" source_channel_id="annotated_data" sink_channel_id="data" />
+		<link id="6" source_node_id="5" sink_node_id="6" source_channel="Misclassified" sink_channel="Data" enabled="true" source_channel_id="misclassified" sink_channel_id="data" />
+	</links>
+	<annotations>
+		<text id="0" type="text/markdown" rect="(550, 20, 300, 140)" font-family="Sans Serif" font-size="16">Chapter 7. The first use downloads about 2 MB of pretrained weights. Training takes about 35 seconds. Classify Images shows the test accuracy; click a cell in Misclassified Images to see those pictures. The dataset paths are absolute.</text>
+	</annotations>
+	<thumbnail />
+	<node_properties>
+		<properties node_id="0" format="pickle">gASVAgEAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAxyZWNlbnRfcGF0aHOUXZSMHm9yYW5nZXdpZGdldC51dGlscy5maWxlZGlhbG9nc5SMClJlY2VudFBhdGiUk5QpgZR9lCiMB2Fic3BhdGiUjEUvaG9tZS9jaHJpcy9jb2RlL29yYW5nZS9vcmFuZ2UzLWltYWdlbmV0cy1ib29rL2RhdGFzZXRzL2NpZmFyMTAvdHJhaW6UjAZwcmVmaXiUjACUjAdyZWxwYXRolGgMjAV0aXRsZZRoDIwFc2hlZXSUaAyMC2ZpbGVfZm9ybWF0lE51YmGMC19fdmVyc2lvbl9flEsBdS4=</properties>
+		<properties node_id="1" format="pickle">gASVQgAAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjApiYXNlX2luZGV4lEsAjAluX2NsYXNzZXOUSwqMBmZyZWV6ZZSIdS4=</properties>
+		<properties node_id="2" format="pickle">gASVTAAAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAZlcG9jaHOUSwWMCmJhdGNoX3NpemWUSyCMEnZhbGlkYXRpb25fcGVyY2VudJRLFHUu</properties>
+		<properties node_id="3" format="pickle">gASVAQEAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAxyZWNlbnRfcGF0aHOUXZSMHm9yYW5nZXdpZGdldC51dGlscy5maWxlZGlhbG9nc5SMClJlY2VudFBhdGiUk5QpgZR9lCiMB2Fic3BhdGiUjEQvaG9tZS9jaHJpcy9jb2RlL29yYW5nZS9vcmFuZ2UzLWltYWdlbmV0cy1ib29rL2RhdGFzZXRzL2NpZmFyMTAvdGVzdJSMBnByZWZpeJSMAJSMB3JlbHBhdGiUaAyMBXRpdGxllGgMjAVzaGVldJRoDIwLZmlsZV9mb3JtYXSUTnViYYwLX192ZXJzaW9uX1+USwF1Lg==</properties>
+		<properties node_id="5" format="pickle">gASVGgAAAAAAAAB9lIwSY29udHJvbEFyZWFWaXNpYmxllIhzLg==</properties>
+	</node_properties>
+</scheme>

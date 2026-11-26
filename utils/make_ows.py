@@ -30,6 +30,10 @@ WIDGETS = {
     "Train GAN": ("orangecontrib.imagenets.widgets.ow_train_gan.OWTrainGAN", IN),
     "Train Diffusion": ("orangecontrib.imagenets.widgets.ow_train_diffusion.OWTrainDiffusion", IN),
     "Generate Images": ("orangecontrib.imagenets.widgets.ow_generate_images.OWGenerateImages", IN),
+    "Pretrained ImageNet": ("orangecontrib.imagenets.widgets.ow_pretrained_imagenet.OWPretrainedImageNet", IN),
+    "Inspect ImageNet": ("orangecontrib.imagenets.widgets.ow_inspect_imagenet.OWInspectImageNet", IN),
+    "Misclassified Images": ("orangecontrib.imagenets.widgets.ow_misclassified.OWMisclassified", IN),
+    "Load ImageNet": ("orangecontrib.imagenets.widgets.ow_load_imagenet.OWLoadImageNet", IN),
     "Distributions": ("Orange.widgets.visualize.owdistributions.OWDistributions", "Orange3"),
     "Data Table": ("Orange.widgets.data.owtable.OWTable", "Orange3"),
 }
@@ -37,6 +41,12 @@ WIDGETS = {
 LINKS = {
     ("Import Images", "Train GAN"): (("Data", "data"), ("Images", "data")),
     ("Import Images", "Train Diffusion"): (("Data", "data"), ("Images", "data")),
+    ("Import Images", "Pretrained ImageNet"): (("Data", "data"), ("Images", "data")),
+    ("Pretrained ImageNet", "Train ImageNet"): (("Model", "model"), ("Learner", "model")),
+    ("Classify Images", "Misclassified Images"): (("Annotated Data", "annotated_data"), ("Annotated Data", "data")),
+    ("Misclassified Images", "Image Viewer"): (("Misclassified", "misclassified"), ("Data", "data")),
+    ("Train ImageNet", "Inspect ImageNet"): (("Trained Model", "trained_model"), ("Model", "model")),
+    ("Import Images", "Inspect ImageNet"): (("Data", "data"), ("Images", "data")),
     ("Import Images", "Image Viewer"): (("Data", "data"), ("Data", "data")),
     ("Import Images", "Data Table"): (("Data", "data"), ("Data", "data")),
     ("Import Images", "Distributions"): (("Data", "data"), ("Data", "data")),
@@ -168,6 +178,26 @@ def tour():
     return build(nodes, links, [(note, (520, 20, 300, 110))])
 
 
+def transfer():
+    nodes = [
+        import_images("train", "cifar10/train", "Import Images: CIFAR-10 train", (100, 150)),
+        ("pre", "Pretrained ImageNet", "Pretrained ImageNet", (325, 20),
+         {"controlAreaVisible": True, "base_index": 0, "n_classes": 10, "freeze": True}),
+        ("trainnet", "Train ImageNet", "Train ImageNet", (325, 150),
+         {"controlAreaVisible": True, "epochs": 5, "batch_size": 32, "validation_percent": 20}),
+        import_images("test", "cifar10/test", "Import Images: CIFAR-10 test", (100, 300)),
+        ("classify", "Classify Images", "Classify Images", (550, 225), {}),
+        ("mis", "Misclassified Images", "Misclassified Images", (775, 225), {"controlAreaVisible": True}),
+        ("viewer", "Image Viewer", "Image Viewer: mistakes", (1000, 225), {}),
+    ]
+    links = [("train", "pre"), ("pre", "trainnet"), ("train", "trainnet"), ("trainnet", "classify"),
+             ("test", "classify"), ("classify", "mis"), ("mis", "viewer")]
+    note = ("Chapter 7. The first use downloads about 2 MB of pretrained weights. Training takes about 35 seconds. "
+            "Classify Images shows the test accuracy; click a cell in Misclassified Images to see those pictures. "
+            "The dataset paths are absolute.")
+    return build(nodes, links, [(note, (550, 20, 300, 140))])
+
+
 def check(path):
     """Load the .ows with Orange's own reader; print node/link counts and errors."""
     import os
@@ -190,7 +220,8 @@ def check(path):
 WORKFLOWS = {"mnist-gan": (gan, "mnist-gan.ows"),
              "mnist-diffusion": (diffusion, "mnist-diffusion.ows"),
              "mnist-cnn": (cnn, "mnist-cnn.ows"),
-             "mnist-explore": (explore, "mnist-explore.ows"), "datasets-tour": (tour, "datasets-tour.ows")}
+             "mnist-explore": (explore, "mnist-explore.ows"), "datasets-tour": (tour, "datasets-tour.ows"),
+             "cifar-transfer": (transfer, "cifar-transfer.ows")}
 
 if __name__ == "__main__":
     # Use the dev checkout's widgets until a release includes them (orangecontrib is a namespace package).
