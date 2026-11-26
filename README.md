@@ -1,6 +1,6 @@
 # Training ImageNets with Orange: A Lab-Based Approach
 
-![](imgs/Title%20Image.png)
+![](imgs/Title-Image.png)
 
 ## Course Overview
 
