@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<scheme version="2.0" title="" description="">
+	<nodes>
+		<node id="0" name="Import Images" qualified_name="orangecontrib.imageanalytics.widgets.owimageimport.OWImportImages" project_name="Orange3-ImageAnalytics" version="" title="Import Images: MNIST digits" position="(100, 20)" />
+		<node id="1" name="Image Viewer" qualified_name="orangecontrib.imageanalytics.widgets.owimageviewer.OWImageViewer" project_name="Orange3-ImageAnalytics" version="" title="Image Viewer: MNIST digits" position="(325, 20)" />
+		<node id="2" name="Import Images" qualified_name="orangecontrib.imageanalytics.widgets.owimageimport.OWImportImages" project_name="Orange3-ImageAnalytics" version="" title="Import Images: Fashion-MNIST" position="(100, 150)" />
+		<node id="3" name="Image Viewer" qualified_name="orangecontrib.imageanalytics.widgets.owimageviewer.OWImageViewer" project_name="Orange3-ImageAnalytics" version="" title="Image Viewer: Fashion-MNIST" position="(325, 150)" />
+		<node id="4" name="Import Images" qualified_name="orangecontrib.imageanalytics.widgets.owimageimport.OWImportImages" project_name="Orange3-ImageAnalytics" version="" title="Import Images: EMNIST letters" position="(100, 280)" />
+		<node id="5" name="Image Viewer" qualified_name="orangecontrib.imageanalytics.widgets.owimageviewer.OWImageViewer" project_name="Orange3-ImageAnalytics" version="" title="Image Viewer: EMNIST letters" position="(325, 280)" />
+		<node id="6" name="Import Images" qualified_name="orangecontrib.imageanalytics.widgets.owimageimport.OWImportImages" project_name="Orange3-ImageAnalytics" version="" title="Import Images: CIFAR-10" position="(100, 410)" />
+		<node id="7" name="Image Viewer" qualified_name="orangecontrib.imageanalytics.widgets.owimageviewer.OWImageViewer" project_name="Orange3-ImageAnalytics" version="" title="Image Viewer: CIFAR-10" position="(325, 410)" />
+	</nodes>
+	<links>
+		<link id="0" source_node_id="0" sink_node_id="1" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
+		<link id="1" source_node_id="2" sink_node_id="3" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
+		<link id="2" source_node_id="4" sink_node_id="5" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
+		<link id="3" source_node_id="6" sink_node_id="7" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
+	</links>
+	<annotations>
+		<text id="0" type="text/markdown" rect="(520, 20, 300, 110)" font-family="Sans Serif" font-size="16">Chapter 2. Build the datasets first with `make datasets`. The dataset paths are absolute: re-point each Import Images on another machine.</text>
+	</annotations>
+	<thumbnail />
+	<node_properties>
+		<properties node_id="0" format="pickle">gASVAAEAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAxyZWNlbnRfcGF0aHOUXZSMHm9yYW5nZXdpZGdldC51dGlscy5maWxlZGlhbG9nc5SMClJlY2VudFBhdGiUk5QpgZR9lCiMB2Fic3BhdGiUjEMvaG9tZS9jaHJpcy9jb2RlL29yYW5nZS9vcmFuZ2UzLWltYWdlbmV0cy1ib29rL2RhdGFzZXRzL21uaXN0L3RyYWlulIwGcHJlZml4lIwAlIwHcmVscGF0aJRoDIwFdGl0bGWUaAyMBXNoZWV0lGgMjAtmaWxlX2Zvcm1hdJROdWJhjAtfX3ZlcnNpb25fX5RLAXUu</properties>
+		<properties node_id="2" format="pickle">gASVCAEAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAxyZWNlbnRfcGF0aHOUXZSMHm9yYW5nZXdpZGdldC51dGlscy5maWxlZGlhbG9nc5SMClJlY2VudFBhdGiUk5QpgZR9lCiMB2Fic3BhdGiUjEsvaG9tZS9jaHJpcy9jb2RlL29yYW5nZS9vcmFuZ2UzLWltYWdlbmV0cy1ib29rL2RhdGFzZXRzL2Zhc2hpb24tbW5pc3QvdHJhaW6UjAZwcmVmaXiUjACUjAdyZWxwYXRolGgMjAV0aXRsZZRoDIwFc2hlZXSUaAyMC2ZpbGVfZm9ybWF0lE51YmGMC19fdmVyc2lvbl9flEsBdS4=</properties>
+		<properties node_id="4" format="pickle">gASVCQEAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAxyZWNlbnRfcGF0aHOUXZSMHm9yYW5nZXdpZGdldC51dGlscy5maWxlZGlhbG9nc5SMClJlY2VudFBhdGiUk5QpgZR9lCiMB2Fic3BhdGiUjEwvaG9tZS9jaHJpcy9jb2RlL29yYW5nZS9vcmFuZ2UzLWltYWdlbmV0cy1ib29rL2RhdGFzZXRzL2VtbmlzdC1sZXR0ZXJzL3RyYWlulIwGcHJlZml4lIwAlIwHcmVscGF0aJRoDIwFdGl0bGWUaAyMBXNoZWV0lGgMjAtmaWxlX2Zvcm1hdJROdWJhjAtfX3ZlcnNpb25fX5RLAXUu</properties>
+		<properties node_id="6" format="pickle">gASVAgEAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAxyZWNlbnRfcGF0aHOUXZSMHm9yYW5nZXdpZGdldC51dGlscy5maWxlZGlhbG9nc5SMClJlY2VudFBhdGiUk5QpgZR9lCiMB2Fic3BhdGiUjEUvaG9tZS9jaHJpcy9jb2RlL29yYW5nZS9vcmFuZ2UzLWltYWdlbmV0cy1ib29rL2RhdGFzZXRzL2NpZmFyMTAvdHJhaW6UjAZwcmVmaXiUjACUjAdyZWxwYXRolGgMjAV0aXRsZZRoDIwFc2hlZXSUaAyMC2ZpbGVfZm9ybWF0lE51YmGMC19fdmVyc2lvbl9flEsBdS4=</properties>
+	</node_properties>
+</scheme>

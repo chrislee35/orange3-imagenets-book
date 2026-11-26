@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+book.md
+book.md2
+public/
+.claude/
+# Image subsets are built on demand by utils/export_datasets.py
+datasets/*/

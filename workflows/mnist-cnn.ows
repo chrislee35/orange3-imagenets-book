@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<scheme version="2.0" title="" description="">
+	<nodes>
+		<node id="0" name="Import Images" qualified_name="orangecontrib.imageanalytics.widgets.owimageimport.OWImportImages" project_name="Orange3-ImageAnalytics" version="" title="Import Images: MNIST train" position="(100, 150)" />
+		<node id="1" name="Build ImageNet" qualified_name="orangecontrib.imagenets.widgets.ow_imagenet_builder.OWImageNetBuilder" project_name="orange3-imagenets" version="" title="Build ImageNet: SimpleCNN 28x28" position="(325, 20)" />
+		<node id="2" name="Train ImageNet" qualified_name="orangecontrib.imagenets.widgets.ow_image_train_and_score.OWImageTrainAndScore" project_name="orange3-imagenets" version="" title="Train ImageNet" position="(325, 150)" />
+		<node id="3" name="Import Images" qualified_name="orangecontrib.imageanalytics.widgets.owimageimport.OWImportImages" project_name="Orange3-ImageAnalytics" version="" title="Import Images: MNIST test" position="(100, 300)" />
+		<node id="4" name="Classify Images" qualified_name="orangecontrib.imagenets.widgets.ow_imagenet_classify.OWImageNetClassify" project_name="orange3-imagenets" version="" title="Classify Images" position="(550, 225)" />
+		<node id="5" name="Data Table" qualified_name="Orange.widgets.data.owtable.OWTable" project_name="Orange3" version="" title="Data Table: predictions" position="(775, 225)" />
+	</nodes>
+	<links>
+		<link id="0" source_node_id="0" sink_node_id="2" source_channel="Data" sink_channel="Evaluation Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
+		<link id="1" source_node_id="1" sink_node_id="2" source_channel="Model" sink_channel="Learner" enabled="true" source_channel_id="model" sink_channel_id="model" />
+		<link id="2" source_node_id="2" sink_node_id="4" source_channel="Trained Model" sink_channel="Model" enabled="true" source_channel_id="trained_model" sink_channel_id="model" />
+		<link id="3" source_node_id="3" sink_node_id="4" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
+		<link id="4" source_node_id="4" sink_node_id="5" source_channel="Annotated Data" sink_channel="Data" enabled="true" source_channel_id="annotated_data" sink_channel_id="data" />
+	</links>
+	<annotations>
+		<text id="0" type="text/markdown" rect="(550, 20, 300, 120)" font-family="Sans Serif" font-size="16">Train ImageNet starts when both inputs arrive (5 epochs, about 10 seconds). Classify Images shows the accuracy on the test images; the Data Table lists every Prediction next to its category. The dataset paths are absolute.</text>
+	</annotations>
+	<thumbnail />
+	<node_properties>
+		<properties node_id="0" format="pickle">gASVAAEAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAxyZWNlbnRfcGF0aHOUXZSMHm9yYW5nZXdpZGdldC51dGlscy5maWxlZGlhbG9nc5SMClJlY2VudFBhdGiUk5QpgZR9lCiMB2Fic3BhdGiUjEMvaG9tZS9jaHJpcy9jb2RlL29yYW5nZS9vcmFuZ2UzLWltYWdlbmV0cy1ib29rL2RhdGFzZXRzL21uaXN0L3RyYWlulIwGcHJlZml4lIwAlIwHcmVscGF0aJRoDIwFdGl0bGWUaAyMBXNoZWV0lGgMjAtmaWxlX2Zvcm1hdJROdWJhjAtfX3ZlcnNpb25fX5RLAXUu</properties>
+		<properties node_id="1" format="pickle">gASVWQEAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAxpbnB1dF9oZWlnaHSUSxyMC2lucHV0X3dpZHRolEscjA5jaGFubmVsc19pbmRleJRLAIwMbW9kZWxfY29uZmlnlIz4W3sidHlwZSI6ICJSZXNjYWxpbmciLCAic2NhbGUiOiAwLjAwMzkyMTU2ODYyNzQ1MDk4fSwgeyJ0eXBlIjogIkNvbnYyRCIsICJmaWx0ZXJzIjogMzIsICJrZXJuZWxfc2l6ZSI6IDMsICJhY3RpdmF0aW9uIjogInJlbHUifSwgeyJ0eXBlIjogIk1heFBvb2xpbmcyRCIsICJwb29sX3NpemUiOiAyfSwgeyJ0eXBlIjogIkZsYXR0ZW4ifSwgeyJ0eXBlIjogIkRlbnNlIiwgInVuaXRzIjogMTAsICJhY3RpdmF0aW9uIjogInNvZnRtYXgifV2UdS4=</properties>
+		<properties node_id="2" format="pickle">gASVTAAAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAZlcG9jaHOUSwWMCmJhdGNoX3NpemWUSyCMEnZhbGlkYXRpb25fcGVyY2VudJRLFHUu</properties>
+		<properties node_id="3" format="pickle">gASV/wAAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAxyZWNlbnRfcGF0aHOUXZSMHm9yYW5nZXdpZGdldC51dGlscy5maWxlZGlhbG9nc5SMClJlY2VudFBhdGiUk5QpgZR9lCiMB2Fic3BhdGiUjEIvaG9tZS9jaHJpcy9jb2RlL29yYW5nZS9vcmFuZ2UzLWltYWdlbmV0cy1ib29rL2RhdGFzZXRzL21uaXN0L3Rlc3SUjAZwcmVmaXiUjACUjAdyZWxwYXRolGgMjAV0aXRsZZRoDIwFc2hlZXSUaAyMC2ZpbGVfZm9ybWF0lE51YmGMC19fdmVyc2lvbl9flEsBdS4=</properties>
+	</node_properties>
+</scheme>

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<scheme version="2.0" title="" description="">
+	<nodes>
+		<node id="0" name="Import Images" qualified_name="orangecontrib.imageanalytics.widgets.owimageimport.OWImportImages" project_name="Orange3-ImageAnalytics" version="" title="Import Images: MNIST digits" position="(100, 150)" />
+		<node id="1" name="Image Viewer" qualified_name="orangecontrib.imageanalytics.widgets.owimageviewer.OWImageViewer" project_name="Orange3-ImageAnalytics" version="" title="Image Viewer: real digits" position="(325, 20)" />
+		<node id="2" name="Train GAN" qualified_name="orangecontrib.imagenets.widgets.ow_train_gan.OWTrainGAN" project_name="orange3-imagenets" version="" title="Train GAN" position="(325.0, 151.0)" />
+		<node id="3" name="Generate Images" qualified_name="orangecontrib.imagenets.widgets.ow_generate_images.OWGenerateImages" project_name="orange3-imagenets" version="" title="Generate Images" position="(550, 150)" />
+		<node id="4" name="Image Viewer" qualified_name="orangecontrib.imageanalytics.widgets.owimageviewer.OWImageViewer" project_name="Orange3-ImageAnalytics" version="" title="Image Viewer: generated digits" position="(775, 150)" />
+	</nodes>
+	<links>
+		<link id="0" source_node_id="0" sink_node_id="1" source_channel="Data" sink_channel="Data" enabled="true" source_channel_id="data" sink_channel_id="data" />
+		<link id="1" source_node_id="0" sink_node_id="2" source_channel="Data" sink_channel="Images" enabled="true" source_channel_id="data" sink_channel_id="data" />
+		<link id="2" source_node_id="2" sink_node_id="3" source_channel="Generator" sink_channel="Model" enabled="true" source_channel_id="generator" sink_channel_id="model" />
+		<link id="3" source_node_id="3" sink_node_id="4" source_channel="Images" sink_channel="Data" enabled="true" source_channel_id="images" sink_channel_id="data" />
+	</links>
+	<annotations>
+		<text id="0" type="text/markdown" rect="(550, 260, 300, 120)" font-family="Sans Serif" font-size="16">Open Train GAN and click Train (about a minute for 15 epochs). Samples appear after every epoch. The dataset path is absolute: re-point Import Images on another machine.</text>
+	</annotations>
+	<thumbnail />
+	<node_properties>
+		<properties node_id="0" format="pickle">gASVWwEAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAxyZWNlbnRfcGF0aHOUXZSMHm9y
+YW5nZXdpZGdldC51dGlscy5maWxlZGlhbG9nc5SMClJlY2VudFBhdGiUk5QpgZR9lCiMB2Fic3Bh
+dGiUjEMvaG9tZS9jaHJpcy9jb2RlL29yYW5nZS9vcmFuZ2UzLWltYWdlbmV0cy1ib29rL2RhdGFz
+ZXRzL21uaXN0L3RyYWlulIwGcHJlZml4lIwAlIwHcmVscGF0aJRoDIwFdGl0bGWUaAyMBXNoZWV0
+lGgMjAtmaWxlX2Zvcm1hdJROdWJhjBNzYXZlZFdpZGdldEdlb21ldHJ5lENCAdnQywADAAAAAAMT
+AAABrQAABGwAAAJaAAADEwAAAc0AAARsAAACWgAAAAAAAAAAB4AAAAMTAAABzQAABGwAAAJalIwL
+X192ZXJzaW9uX1+USwF1Lg==
+</properties>
+		<properties node_id="1" format="pickle">gASVlQEAAAAAAAB9lCiMCmF1dG9Db21taXSUiIwSY29udHJvbEFyZWFWaXNpYmxllIiMCWltYWdl
+U2l6ZZRLZIwTc2F2ZWRXaWRnZXRHZW9tZXRyeZRDQgHZ0MsAAwAAAAAJgQAAAM4AAAygAAADJQAA
+CYEAAADOAAAMoAAAAyUAAAABAAAAAAeAAAAJgQAAAM4AAAygAAADJZSMC19fdmVyc2lvbl9flEsC
+jBBjb250ZXh0X3NldHRpbmdzlF2UjBVvcmFuZ2V3aWRnZXQuc2V0dGluZ3OUjAdDb250ZXh0lJOU
+KYGUfZQojAZ2YWx1ZXOUfZQojAppbWFnZV9hdHRylIwFaW1hZ2WUS2eGlIwOc2VsZWN0ZWRfaXRl
+bXOUj5RK/v///4aUjAp0aXRsZV9hdHRylGgRS2eGlGgGSwJ1jAphdHRyaWJ1dGVzlH2UjAhjYXRl
+Z29yeZRLAXOMBW1ldGFzlH2UKIwKaW1hZ2UgbmFtZZRLA2gRSwOMBHNpemWUSwKMBXdpZHRolEsC
+jAZoZWlnaHSUSwJ1dWJhdS4=
+</properties>
+		<properties node_id="2" format="literal">{'base_filters': 32, 'batch_size': 64, 'channels_index': 0, 'controlAreaVisible': True, 'epochs': 15, 'img_height': 28, 'img_width': 28, 'latent_dim': 64, 'lr_index': 1, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\t\x86\x00\x00\x01\x8d\x00\x00\x0cE\x00\x00\x03\xa0\x00\x00\t\x86\x00\x00\x01\xad\x00\x00\x0cE\x00\x00\x03\xa0\x00\x00\x00\x01\x00\x00\x00\x00\x07\x80\x00\x00\t\x86\x00\x00\x01\xad\x00\x00\x0cE\x00\x00\x03\xa0', '__version__': 1}</properties>
+		<properties node_id="3" format="literal">{'class_index': 0, 'controlAreaVisible': True, 'count': 16, 'guidance': 2.0, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\n\xe0\x00\x00\x01+\x00\x00\r\xcf\x00\x00\x03\x1e\x00\x00\n\xe0\x00\x00\x01+\x00\x00\r\xcf\x00\x00\x03\x1e\x00\x00\x00\x01\x00\x00\x00\x00\x07\x80\x00\x00\n\xe0\x00\x00\x01+\x00\x00\r\xcf\x00\x00\x03\x1e', 'seed': 0, 'show_steps': False, '__version__': 1}</properties>
+		<properties node_id="4" format="pickle">gASVWQEAAAAAAAB9lCiMCmF1dG9Db21taXSUiIwSY29udHJvbEFyZWFWaXNpYmxllIiMCWltYWdl
+U2l6ZZRLlIwTc2F2ZWRXaWRnZXRHZW9tZXRyeZRDQgHZ0MsAAwAAAAAJgQAAAM4AAAygAAADJQAA
+CYEAAADOAAAMoAAAAyUAAAABAAAAAAeAAAAJgQAAAM4AAAygAAADJZSMC19fdmVyc2lvbl9flEsC
+jBBjb250ZXh0X3NldHRpbmdzlF2UjBVvcmFuZ2V3aWRnZXQuc2V0dGluZ3OUjAdDb250ZXh0lJOU
+KYGUfZQojAZ2YWx1ZXOUfZQojAppbWFnZV9hdHRylIwFaW1hZ2WUS2eGlIwOc2VsZWN0ZWRfaXRl
+bXOUj5RK/v///4aUjAp0aXRsZV9hdHRylGgRS2eGlGgGSwJ1jAphdHRyaWJ1dGVzlH2UjAVtZXRh
+c5R9lGgRSwNzdWJhdS4=
+</properties>
+	</node_properties>
+	<session_state>
+		<window_groups />
+	</session_state>
+</scheme>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<scheme version="2.0" title="" description="">
+	<nodes>
+		<node id="0" name="Import Images" qualified_name="orangecontrib.imageanalytics.widgets.owimageimport.OWImportImages" project_name="Orange3-ImageAnalytics" version="" title="Import Images: MNIST digits" position="(100, 150)" />
+		<node id="1" name="Train Diffusion" qualified_name="orangecontrib.imagenets.widgets.ow_train_diffusion.OWTrainDiffusion" project_name="orange3-imagenets" version="" title="Train Diffusion" position="(325, 150)" />
+		<node id="2" name="Generate Images" qualified_name="orangecontrib.imagenets.widgets.ow_generate_images.OWGenerateImages" project_name="orange3-imagenets" version="" title="Generate Images" position="(550, 150)" />
+		<node id="3" name="Image Viewer" qualified_name="orangecontrib.imageanalytics.widgets.owimageviewer.OWImageViewer" project_name="Orange3-ImageAnalytics" version="" title="Image Viewer: generated digits" position="(775, 150)" />
+	</nodes>
+	<links>
+		<link id="0" source_node_id="0" sink_node_id="1" source_channel="Data" sink_channel="Images" enabled="true" source_channel_id="data" sink_channel_id="data" />
+		<link id="1" source_node_id="1" sink_node_id="2" source_channel="Diffusion Model" sink_channel="Model" enabled="true" source_channel_id="model" sink_channel_id="model" />
+		<link id="2" source_node_id="2" sink_node_id="3" source_channel="Images" sink_channel="Data" enabled="true" source_channel_id="images" sink_channel_id="data" />
+	</links>
+	<annotations>
+		<text id="0" type="text/markdown" rect="(550, 260, 300, 120)" font-family="Sans Serif" font-size="16">Open Train Diffusion and click Train (about 4 minutes for 20 epochs; previews every 5 epochs). In Generate Images pick a Class, raise Guidance to push toward it, and tick Show denoising steps.</text>
+	</annotations>
+	<thumbnail />
+	<node_properties>
+		<properties node_id="0" format="pickle">gASVWwEAAAAAAAB9lCiMEmNvbnRyb2xBcmVhVmlzaWJsZZSIjAxyZWNlbnRfcGF0aHOUXZSMHm9y
+YW5nZXdpZGdldC51dGlscy5maWxlZGlhbG9nc5SMClJlY2VudFBhdGiUk5QpgZR9lCiMB2Fic3Bh
+dGiUjEMvaG9tZS9jaHJpcy9jb2RlL29yYW5nZS9vcmFuZ2UzLWltYWdlbmV0cy1ib29rL2RhdGFz
+ZXRzL21uaXN0L3RyYWlulIwGcHJlZml4lIwAlIwHcmVscGF0aJRoDIwFdGl0bGWUaAyMBXNoZWV0
+lGgMjAtmaWxlX2Zvcm1hdJROdWJhjBNzYXZlZFdpZGdldEdlb21ldHJ5lENCAdnQywADAAAAAAMT
+AAABrQAABGwAAAJaAAADEwAAAc0AAARsAAACWgAAAAAAAAAAB4AAAAMTAAABzQAABGwAAAJalIwL
+X192ZXJzaW9uX1+USwF1Lg==
+</properties>
+		<properties node_id="1" format="literal">{'base_filters': 16, 'batch_size': 64, 'channels_index': 0, 'controlAreaVisible': True, 'epochs': 20, 'img_height': 28, 'img_width': 28, 'lr_index': 2, 'noise_steps': 200, 'preview_every': 5, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\x0bv\x00\x00\x00\x9c\x00\x00\x0e\x9c\x00\x00\x02\xcc\x00\x00\x0bv\x00\x00\x00\x9c\x00\x00\x0e\x9c\x00\x00\x02\xcc\x00\x00\x00\x01\x00\x00\x00\x00\x07\x80\x00\x00\x0bv\x00\x00\x00\x9c\x00\x00\x0e\x9c\x00\x00\x02\xcc', 'use_classes': True, '__version__': 1}</properties>
+		<properties node_id="2" format="literal">{'class_index': 2, 'controlAreaVisible': True, 'count': 10, 'guidance': 2.0, 'savedWidgetGeometry': b'\x01\xd9\xd0\xcb\x00\x03\x00\x00\x00\x00\t\xfc\x00\x00\x01\xaa\x00\x00\x0c\xeb\x00\x00\x03\xbd\x00\x00\t\xfc\x00\x00\x01\xca\x00\x00\x0c\xeb\x00\x00\x03\xbd\x00\x00\x00\x01\x00\x00\x00\x00\x07\x80\x00\x00\t\xfc\x00\x00\x01\xca\x00\x00\x0c\xeb\x00\x00\x03\xbd', 'seed': 0, 'show_steps': False, '__version__': 1}</properties>
+		<properties node_id="3" format="pickle">gASVpAEAAAAAAAB9lCiMCmF1dG9Db21taXSUiIwSY29udHJvbEFyZWFWaXNpYmxllIiMCWltYWdl
+U2l6ZZRLZIwTc2F2ZWRXaWRnZXRHZW9tZXRyeZRDQgHZ0MsAAwAAAAAJgQAAAK4AAAygAAADJQAA
+CYEAAADOAAAMoAAAAyUAAAABAAAAAAeAAAAJgQAAAM4AAAygAAADJZSMC19fdmVyc2lvbl9flEsC
+jBBjb250ZXh0X3NldHRpbmdzlF2UKIwVb3Jhbmdld2lkZ2V0LnNldHRpbmdzlIwHQ29udGV4dJST
+lCmBlH2UKIwGdmFsdWVzlH2UKIwKaW1hZ2VfYXR0cpSMBWltYWdllEtnhpSMDnNlbGVjdGVkX2l0
+ZW1zlI+USv7///+GlIwKdGl0bGVfYXR0cpRoEUtnhpRoBksCdYwKYXR0cmlidXRlc5R9lIwIY2F0
+ZWdvcnmUSwFzjAVtZXRhc5R9lGgRSwNzdWJoCymBlH2UKGgOfZQoaBBoEUtnhpRoE4+USv7///+G
+lGgWaBFLZ4aUaAZLAnVoGH2UaBt9lGgRSwNzdWJldS4=
+</properties>
+	</node_properties>
+	<session_state>
+		<window_groups />
+	</session_state>
+</scheme>
