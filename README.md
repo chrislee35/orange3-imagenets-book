@@ -19,7 +19,6 @@ This workbook teaches how neural networks learn from images, using Orange Data M
 - **Fashion-MNIST**: clothing items
 - **EMNIST**: handwritten letters
 - **CIFAR-10**: small color photos
-- **Cats, dogs, and ducks**: a small hand-collected set
 
 ## Learning Outcomes
 
