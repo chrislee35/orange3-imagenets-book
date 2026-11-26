@@ -104,8 +104,8 @@ New layers are inserted just before the last *Dense* layer, and the weight count
 
 1. Start from the workflow of Lab 3A (`workflows/mnist-cnn.ows`).
 2. In *Build ImageNet* choose **SimpleCNN**. This is the *1 conv* network.
-3. For *TwoConv*, add a *Conv2D* and a *MaxPooling2D* after the first *MaxPooling2D* (use the **Add Layers** buttons and ↑ ↓ to place them), and set the new *Conv2D* **filters** to **64**. Check **Weights: 34,826**.
-4. For *ThreeConv*, add another *Conv2D* with **128** filters, and no pooling after it. Check **Weights: 104,202**.
+3. For *TwoConv*, press **Clear** and then press, in this order, **Conv2D** (32 filters), **MaxPooling2D**, **Conv2D** (set **filters** to **64**), **MaxPooling2D**, **Flatten**. Check **Weights: 34,826**.
+4. For *ThreeConv*, press **Clear** and build **Conv2D** (32), **MaxPooling2D**, **Conv2D** (64), **MaxPooling2D**, **Conv2D** (**128**), **Flatten**, with no pooling after the last convolution. Check **Weights: 104,202**.
 5. Train each for **5 epochs** and read the test accuracy from *Classify Images*. Repeat each twice.
 6. Connect the trained *2 conv* network to *Inspect ImageNet* (and the training images to its **Images** input). Compare the feature maps of the first and of the second *Conv2D* layer for the same digit.
 
@@ -164,7 +164,7 @@ New layers are inserted just before the last *Dense* layer, and the weight count
 |---|---|
 | relu to tanh | Set the *Conv2D* **activation** to `tanh` |
 | relu to nothing | Set the *Conv2D* **activation** to `linear` |
-| max to average pooling | Delete *MaxPooling2D* and add *AveragePooling2D* |
+| max to average pooling | Add *AveragePooling2D* (it lands below *Flatten*; press **↑** once to move it above), then delete *MaxPooling2D* |
 
 **Expected results** (one run each):
 

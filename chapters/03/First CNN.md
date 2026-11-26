@@ -99,13 +99,15 @@ Look at the end of the graph. The training accuracy (99%) is higher than the val
 |---|---|---|
 | *Import Images* | Reads the image folder | The folder |
 | *Build ImageNet* | Designs the network layer by layer | **Input Images** (Height, Width, Channels), **Prebuilt ImageNets**, the **Add Layers** buttons; ↑ ↓ ✕ on each layer |
-| *Train ImageNet* | Trains and plots the curves; outputs the trained model | **Batch Size**, **Epochs**, **Validation split (%)** |
+| *Train ImageNet* | Trains and plots the curves; outputs the trained model | **Batch Size**, **Epochs**, **Validation split (%)** (leave **Learning rate** at 0.001) |
 | *Classify Images* | Labels new images and reports the accuracy | none |
 | *Data Table* | Shows each test image with its **Prediction** | |
 | *Misclassified Images* | Confusion matrix of the test results; the wrong images as output | click a cell to select those images |
 | *Inspect ImageNet* | Shows the learned filters and the feature maps for one image | **Layer**, **Row** |
 
 *Build ImageNet* shows the number of **Weights** and the **Output** shape under *Input Images*. Use it to check your hand count.
+
+To build a network from scratch, press **Clear**: it leaves a *Rescaling* layer and the final *Dense* layer. Every layer button you press afterwards inserts its layer just above the final *Dense* layer, so pressing **Conv2D**, **MaxPooling2D**, **Flatten** gives the layers in that order. The ↑ ↓ ✕ buttons in each layer's box move or remove it.
 
 ![Figure 2. Build ImageNet with SimpleCNN loaded: 54,410 weights, the output has 10 numbers, and each layer has its own box.](build-imagenet.png)
 
