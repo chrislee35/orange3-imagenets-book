@@ -10,7 +10,8 @@
 
 - [ ] Title image (`imgs/Title Image.png`; README links to it)
 - [ ] Click through every lab in the Orange canvas (most were verified by script or by running the widgets headless)
-- [ ] Open each workflow in a clean Orange install with the released add-on (the new widgets are only on `main`; release orange3-imagenets first)
+- [x] orange3-imagenets 0.0.6 is on PyPI with all the widgets; all six workflows load against the released add-on (checked with `scheme_load`)
+- [ ] Open each workflow in a clean Orange install (a fresh environment, not the development one) and click through the labs
 - [ ] Real icons for the add-on widgets (GAN, diffusion, generate, inspect, misclassified, pretrained are placeholder copies)
 - [ ] Re-check run-to-run numbers on another machine; check licensing text for MNIST, EMNIST, CIFAR-10
 - [ ] Optional: a cat / dog / duck image set with a clear license (not used by the chapters now)
