@@ -11,7 +11,9 @@ This workbook teaches how neural networks learn from images, using Orange Data M
 - **Images as data**: pixels, image tables, preprocessing and augmentation
 - **Convolutional networks**: filters, pooling, depth, normalization, residual blocks
 - **Training**: loss, accuracy, overfitting, dropout
+- **Reusing and inspecting models**: saving, transfer learning from a pretrained network, filters, and confusion matrices
 - **Generative models**: GANs and diffusion, in miniature
+- **A capstone project** that puts it together
 
 ### Datasets
 
@@ -33,7 +35,9 @@ By the end of this workbook, you will be able to:
 ## Course Requirements
 
 - **Prerequisites**: Basic familiarity with Orange (widgets, links, data tables).
-- **Tools**: Orange 3.39+, the orange3-imagenets add-on (install from the Add-ons dialog). Everything runs on a CPU; labs that take more than about five minutes are marked *Optional*.
+- **Tools**: Orange 3.39+ with the Orange3-ImageAnalytics add-on and the orange3-imagenets add-on. The widgets *Pretrained ImageNet*, *Inspect ImageNet*, *Misclassified Images*, and the GAN and diffusion widgets are newer than the version in the Add-ons dialog, so install the add-on from its GitHub repository (`pip install git+https://github.com/chrislee35/orange3-imagenets.git`) until a release includes them.
+- **Datasets**: `make datasets` builds the image folders and needs a Python environment with Keras (TensorFlow) and torchvision. The first run downloads the datasets (CIFAR-10 about 170 MB, EMNIST about 560 MB).
+- **Hardware**: everything runs on a CPU; labs that take more than about five minutes are marked *Optional*. The diffusion labs are the slowest (about 4 minutes for 20 epochs).
 
 ## Authors
 
