@@ -85,8 +85,9 @@ You will watch this loop happen. *Train ImageNet* draws the loss going down and 
 | **Fashion-MNIST** | clothing items | 10 (bag, boot, coat, ...) | 28 x 28 x 1 | Same size as MNIST, harder |
 | **EMNIST letters** | handwritten letters | 26 (a to z, capitals and lowercase merged) | 28 x 28 x 1 | More classes, more confusable shapes |
 | **CIFAR-10** | small color photos | 10 (airplane, car, bird, cat, ...) | 32 x 32 x 3 | Real photos, much harder |
+| **Cats, dogs, ducks** | photographs | 3 | up to 256 pixels, color | Only 126 training pictures: a taste of a small, real project (Chapter 7) |
 
-The full datasets are large (CIFAR-10 alone is 170 MB to download), so the book works with small subsets you build yourself: 500 training images and 100 test images per class. Chapter 2 explains how to build them and compares them.
+The full datasets are large (CIFAR-10 alone is 170 MB to download), so the book works with small subsets you build yourself: 500 training images and 100 test images per class. Chapter 2 explains how to build them and compares them. The cat, dog, and duck photos are built the same way, with `make animals`.
 
 ---
 

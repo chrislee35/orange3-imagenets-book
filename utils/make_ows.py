@@ -182,24 +182,30 @@ def tour():
     return build(nodes, links, [(note, (520, 20, 300, 110))])
 
 
-def transfer():
+def transfer(data="cifar10", title="CIFAR-10", classes=10, epochs=5, batch=32, note=None):
     nodes = [
-        import_images("train", "cifar10/train", "Import Images: CIFAR-10 train", (100, 150)),
+        import_images("train", f"{data}/train", f"Import Images: {title} train", (100, 150)),
         ("pre", "Pretrained ImageNet", "Pretrained ImageNet", (325, 20),
-         {"controlAreaVisible": True, "base_index": 0, "n_classes": 10, "freeze": True}),
+         {"controlAreaVisible": True, "base_index": 0, "n_classes": classes, "freeze": True}),
         ("trainnet", "Train ImageNet", "Train ImageNet", (325, 150),
-         {"controlAreaVisible": True, "epochs": 5, "batch_size": 32, "validation_percent": 20}),
-        import_images("test", "cifar10/test", "Import Images: CIFAR-10 test", (100, 300)),
+         {"controlAreaVisible": True, "epochs": epochs, "batch_size": batch, "validation_percent": 20}),
+        import_images("test", f"{data}/test", f"Import Images: {title} test", (100, 300)),
         ("classify", "Classify Images", "Classify Images", (550, 225), {}),
         ("mis", "Misclassified Images", "Misclassified Images", (775, 225), {"controlAreaVisible": True}),
         ("viewer", "Image Viewer", "Image Viewer: mistakes", (1000, 225), {}),
     ]
     links = [("train", "pre"), ("pre", "trainnet"), ("train", "trainnet"), ("trainnet", "classify"),
              ("test", "classify"), ("classify", "mis"), ("mis", "viewer")]
-    note = ("Chapter 7. The first use downloads about 2 MB of pretrained weights. Training takes about 35 seconds. "
-            "Classify Images shows the test accuracy; click a cell in Misclassified Images to see those pictures. "
-            "The dataset paths are absolute.")
+    note = note or ("Chapter 7. The first use downloads about 2 MB of pretrained weights. Training takes about 35 seconds. "
+                    "Classify Images shows the test accuracy; click a cell in Misclassified Images to see those pictures. "
+                    "The dataset paths are absolute.")
     return build(nodes, links, [(note, (550, 20, 300, 140))])
+
+
+def animals():
+    return transfer("animals", "cats, dogs, ducks", classes=3, epochs=10, batch=16,
+                    note=("Chapter 7. Build the photos first with `make animals`. Pretrained ImageNet is frozen, so only its new "
+                          "last layer learns from 150 pictures; training takes about 7 seconds. The dataset paths are absolute."))
 
 
 def check(path):
@@ -225,7 +231,8 @@ WORKFLOWS = {"mnist-gan": (gan, "mnist-gan.ows"),
              "mnist-diffusion": (diffusion, "mnist-diffusion.ows"),
              "mnist-cnn": (cnn, "mnist-cnn.ows"),
              "mnist-explore": (explore, "mnist-explore.ows"), "datasets-tour": (tour, "datasets-tour.ows"),
-             "cifar-transfer": (transfer, "cifar-transfer.ows")}
+             "cifar-transfer": (transfer, "cifar-transfer.ows"),
+             "animals-transfer": (animals, "animals-transfer.ows")}
 
 if __name__ == "__main__":
     # Use the dev checkout's widgets until a release includes them (orangecontrib is a namespace package).

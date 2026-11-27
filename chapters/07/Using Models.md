@@ -82,6 +82,10 @@ Transfer learning turned 50%, and 60% after much design effort, into **79%** in 
 
 It is not magic: transfer learning helps most when the task is hard and the data is small. On MNIST, where from-scratch networks do well, the frozen pretrained network reached 94.7%: better than SimpleCNN's 93%, but a smaller gain, and not as good as the 97% of the Chapter 4 two-convolution network.
 
+### With just a few photographs
+
+The strongest case is the one you will meet in your own projects: only a handful of photographs. The *cats, dogs, ducks* set of Chapter 2 has **42 training pictures per class**, 126 in all. A guess would be right a third of the time. Trained from scratch (64 x 64 pictures, 20 epochs), SimpleCNN reached **57% and 60%** on the 60 test pictures, with a training accuracy of 100%: it memorized 126 pictures. A frozen *Pretrained ImageNet*, ten epochs, **seven seconds**, scored between **82% and 88%** in five runs (81.7%, 83.3%, 83.3%, 86.7%, and 88.3%). Only the 3,843 weights of its new last layer had learned anything. Transfer learning is what makes a small project of your own possible.
+
 ### Compared with the embedding approach
 
 *Image Embedding* in the ImageAnalytics add-on turns every picture into a row of 1,000 numbers from a pretrained network (*squeezenet*), and you then use an ordinary Orange learner. We ran *Logistic Regression* on those embeddings of the same 5,000 images: **75.8%**, a bit lower than the frozen MobileNet, and the embedding step took **9 minutes** for the 6,000 images, against half a minute for the whole of training with *Pretrained ImageNet*. The embedding route has its own advantage: it works with *any* Orange learner, and the embedding is computed once.
@@ -225,6 +229,33 @@ The **learning rate** is the size of each weight update (Chapter 3 mentioned it)
 
 ---
 
+## Lab Exercise 7F: A Small Project of Your Own
+
+**Goal:** Classify cats, dogs, and ducks from 126 photographs.
+
+*Time: 5 minutes, plus the one-time download of the pictures.*
+
+**Steps:**
+
+1. Build the photos with `make animals` (about 160 MB of metadata on the first run, then 186 pictures). Look at `datasets/animals/ATTRIBUTION.csv`: every picture has an author, a source page, and a licence.
+2. Open `workflows/animals-transfer.ows`, or edit the workflow of 7B to point at `datasets/animals/train` and `datasets/animals/test`. In *Pretrained ImageNet*, check that **Classes** is 3 and **Freeze the pretrained part** is ticked (about 414,051 weights, 3,843 trained). In *Train ImageNet*, set **Epochs** to **10**, **Batch Size** to **16**, and **Validation split (%)** to 20.
+3. Train, and read the accuracy from *Classify Images* (60 test pictures). Run it three times.
+4. For comparison, build *SimpleCNN* for 64 x 64 x 3 pictures (last *Dense* layer with 3 units) and train it for 20 epochs on the same pictures. Preprocess the images to 64 x 64 first, or accept that they are resized for you.
+5. Open *Misclassified Images* and view the cat pictures that were taken for dogs.
+
+**Before you run it:** with 42 pictures per class, how well do you expect a network built from scratch to do? And a pretrained one?
+
+**Expected results:** about **82% to 88%** for the pretrained network, and about **58%** for SimpleCNN, which reaches 100% on its training pictures.
+
+**Questions:**
+
+1. The pretrained network makes mistakes on the cats and dogs (in one of our runs, 2 of 20 cats were taken for dogs, 1 for a duck, and 4 of 20 dogs for cats). Look at them. Would a person make the same mistakes?
+2. Compare the training accuracy of the two networks with their test accuracy. Which one memorized?
+3. Check the duck folder for pictures that are not ducks. How would a wrong label in the training pictures affect the result? And in the test pictures?
+4. If you doubled the number of pictures per class, would you expect the from-scratch network to catch up? *(Chapter 5, section 5.3.)*
+
+---
+
 ## Comprehension Questions
 
 1. What does a saved `.h5` file contain that a JSON file does not?
@@ -251,11 +282,12 @@ The **learning rate** is the size of each weight update (Chapter 3 mentioned it)
 
 ## Notes
 
-- **Workflows for this chapter:** `workflows/cifar-transfer.ows` (Labs 7B to 7D); Lab 7A uses `workflows/mnist-cnn.ows`.
+- **Workflows for this chapter:** `workflows/cifar-transfer.ows` (Labs 7B to 7D) and `workflows/animals-transfer.ows` (Lab 7F); Lab 7A uses `workflows/mnist-cnn.ows`.
 - **Setup:** CIFAR-10 subset (500 training images and 100 test images per class). Pretrained MobileNetV2 (*small*: width 0.35 at 96 x 96, *medium*: width 0.5 at 128 x 128), weights from the ImageNet collection, downloaded by Keras on first use. Adam; 20% stratified validation; accuracy on the 1,000 test images.
 - **Numbers quoted:**
   - Frozen small, 5 epochs: 78.9% (33 s) and 78.3% (23 s) in two script runs; 77.2% and 79.1% in two runs of the widgets. 10 epochs: 79.5%. Medium: 80.6%. 50 images per class: 67.2%. MNIST: 94.7%.
   - Fine-tuned small, 5 epochs: learning rate 0.001, 28.0% (training 94.1%); 0.0001, 66.7% (training 95.8%); 0.00001, 44.2% (training 59.3%).
   - Squeezenet embeddings with *Logistic Regression*: 75.8%, embedding time 555 s for 6,000 images.
+- **Cats, dogs, ducks:** 42 training and 20 test pictures per class from the validation and test parts of Open Images (CC BY 2.0, author credits in `datasets/animals/ATTRIBUTION.csv`; Google does not guarantee the licence labels). Eight duck pictures that were not ducks were removed by hand, and cats and dogs were trimmed to the same number; the exact set is `utils/animals_selection.csv`. Rebuilding: `utils/export_animals.py`. SimpleCNN from scratch at 64 x 64, 20 epochs: 56.7% and 60.0% test accuracy (training 100%); a 2-conv network with BatchNorm scored 31.7% and 36.7%, at chance: its running statistics are unreliable with so few images. Frozen pretrained small MobileNet, 10 epochs: 86.7% and 88.3% in two script runs, and 81.7%, 83.3%, and 83.3% in three runs of the widgets (7 s each); confusion matrix of the first script run: cats 17 right, 2 taken for dogs and 1 for a duck; dogs 16 right and 4 taken for cats; ducks 19 right and 1 taken for a cat.
 - **Downloads:** the first use of *Pretrained ImageNet* needs internet access for about 2 to 4 MB. After that it works offline.
 - **Variance:** a point or two between runs of the same lab; the single runs in the fine-tuning table are indicative only.

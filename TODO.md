@@ -12,6 +12,5 @@
 - [ ] Click through every lab in the Orange canvas (most were verified by script or by running the widgets headless)
 - [x] orange3-imagenets 0.0.6 is on PyPI with all the widgets; all six workflows load against the released add-on (checked with `scheme_load`)
 - [ ] Open each workflow in a clean Orange install (a fresh environment, not the development one) and click through the labs
-- [ ] Re-check run-to-run numbers on another machine; check licensing text for MNIST, EMNIST, CIFAR-10
-- [ ] Optional: a cat / dog / duck image set with a clear license (not used by the chapters now)
+- [ ] Re-check run-to-run numbers on another machine; check licensing text for MNIST, EMNIST, CIFAR-10 (the animals set is CC BY 2.0 from Open Images, credited in `datasets/animals/ATTRIBUTION.csv`)
 - [ ] Optional: Classify Images drops unreadable images, which would misalign the Prediction column

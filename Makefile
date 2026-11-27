@@ -35,4 +35,9 @@ clean:
 datasets:
 	python utils/export_datasets.py
 
-.PHONY: all html clean datasets
+# The cats / dogs / ducks photo set, from Open Images (CC BY 2.0; writes datasets/animals/ATTRIBUTION.csv).
+# Downloads about 160 MB of metadata once, then 186 pictures.
+animals:
+	python utils/export_animals.py
+
+.PHONY: all html clean datasets animals

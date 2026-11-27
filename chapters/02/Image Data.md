@@ -27,6 +27,12 @@ Chapter 1 introduced the datasets; here we look closer.
 
 Two things to notice in the figure. MNIST, Fashion-MNIST, and EMNIST are white on black, centered, and gray, so the only thing that varies is the shape. CIFAR-10 pictures have color, clutter, and objects of any size in any part of the image. Everything a network must learn about a cat has to survive all of that.
 
+### A fifth set: cats, dogs, and ducks
+
+The fourth row of Figure 1 is already photographs, but tiny ones. The last dataset is a small collection of full photographs of three animals, which is what a project of your own would look like: only **42 training pictures and 20 test pictures per class** (186 in all), of different sizes, with a changing background and light. They come from Google's **Open Images** collection, where each picture is listed as CC BY 2.0 licensed, with its author and source page. `make animals` downloads them (about 160 MB of Open Images metadata once, then the 186 pictures, which are shrunk to at most 256 pixels), and writes `datasets/animals/ATTRIBUTION.csv`, which credits every photographer. Keep that file with any copy of the pictures you share.
+
+Real labels are not perfect. Open Images sometimes marks a gull, a puffin, or a pelican as a *duck*, and we left out pictures that also show geese or swans. Even then, a first look at the duck folder found eight pictures that were not ducks, and we removed them by hand. The IDs of the rejected pictures are in `utils/animals_exclude.txt` and the exact list of pictures in `utils/animals_selection.csv`, so `make animals` rebuilds precisely the cleaned set. Because there were only 63 good ducks to choose from, every class has the same 42 training pictures. Looking at your data before you trust a number computed from it is a habit worth keeping. The dataset is used in Chapter 7.
+
 ### Building the subsets
 
 Each dataset is built as a folder tree that *Import Images* reads directly:

@@ -86,3 +86,8 @@ Numbers in the text come from scripted runs (scratchpad exp*.py; same data, Simp
 ## Title image (2026-11-26)
 
 `imgs/Title-Image.png` (1200 x 400): a real MNIST 7 noised with the book's 200-step schedule (steps 0, 30, 60, 100, 199), then a class-7 sample denoised by the 30-epoch diffusion model (6 snapshots, seed 21), with the title in DejaVu Sans. Built with Pillow from the add-on's `make_schedule` and `load_generative`; the model file was a scratch `.imagenet` (retrain with Lab 9A to reproduce).
+
+## Cats, dogs, ducks (2026-11-26)
+
+The original set (Kaggle mixtures: Bing thumbnails, Pixabay/Unsplash-style names, unknown cat numbers, Open Images ducks) has no clear licence and is not used. Replacement: `utils/export_animals.py` (`make animals`) builds it from Open Images validation + test boxes (CC BY 2.0, author per picture in `datasets/animals/ATTRIBUTION.csv`; Google does not guarantee the licence labels). Filters: one of cat/dog/duck only, no goose/swan boxes, biggest box >= 10% of the picture, not a depiction or group, no rotation fix needed. Only 71 duck candidates exist in those splits (63 after the hand review removed 8 non-ducks: gulls, puffins); `utils/animals_exclude.txt` lists the rejected ids and `utils/animals_selection.csv` the exact 186 pictures (42 train + 20 test per class), which the builder downloads so a rebuild is identical (checked). Pictures are fetched from the public Open Images S3 mirror (Flickr hosts refuse the sandbox). `--sync` updates the metadata after deleting pictures by hand; `--reselect` draws a fresh random set (larger train split needs a 2 GB CSV, not done).
+Results (Lab 7F): SimpleCNN from scratch 56.7%, 60.0%; frozen MobileNet 81.7-88.3% in five runs.

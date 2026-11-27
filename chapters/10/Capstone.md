@@ -53,7 +53,7 @@ Pick one of **Fashion-MNIST**, **EMNIST letters**, or **CIFAR-10** (not MNIST, w
 
 ### Project B: Your own images
 
-Photograph or collect two to five kinds of object (leaves, coins, mugs, the faces of your pets, fruit at different ripeness), at least **60 pictures per class**, in a folder per class (`mydata/ripe/`, `mydata/unripe/`). Use pictures you took or may redistribute; do not put anyone's face in the data without their permission. Keep 20% of every class apart in a separate `test` folder at the very start, and do not look at it again until the end. Reduce the pictures with *Preprocess Images* (for example to 96 x 96). Do the same experiments as Project A. With so little data, expect transfer learning (Chapter 7) to be the baseline to beat.
+Photograph or collect two to five kinds of object (leaves, coins, mugs, the faces of your pets, fruit at different ripeness), at least **60 pictures per class**, in a folder per class (`mydata/ripe/`, `mydata/unripe/`). Use pictures you took or may redistribute; do not put anyone's face in the data without their permission. Keep 20% of every class apart in a separate `test` folder at the very start, and do not look at it again until the end. Reduce the pictures with *Preprocess Images* (for example to 96 x 96). Do the same experiments as Project A. With so little data, expect transfer learning (Chapter 7) to be the baseline to beat. Lab 7F is a worked example with 42 pictures per class: a network from scratch scored about 58% and a frozen pretrained one 82% to 88%. If you use pictures from other people, keep a file that records the author and licence of each, as `datasets/animals/ATTRIBUTION.csv` does.
 
 ### Project C: Generate something
 
